@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <x-header></x-header>
-
-    <x-menu></x-menu>
+    <x-dashboard></x-dashboard>
   </div>
 </template>
 

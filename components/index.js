@@ -1,15 +1,18 @@
-
 import Header from './Header';
-import Menu from './Menu'
+import Menu from './Menu';
+import Layout from './Layout'
+import Dashboard from './Dashboard'
 
 
-const components=[
-    Header,
-    Menu
+const components = [
+  Header,
+  Menu,
+  Layout,
+  Dashboard,
 ];
 
 
-const install = function(Vue) {
+const install = function (Vue) {
   components.map(component => {
     Vue.use(component);
   });
@@ -24,7 +27,9 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
   install,
   Header,
-  Menu
+  Menu,
+  Layout,
+  Dashboard,
 };
 
 export default {
