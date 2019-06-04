@@ -1,48 +1,14 @@
 <template>
-  <div style="width: 256px">
-    <a-button type="primary" @click="toggleCollapsed" style="margin-bottom: 16px">
-      <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'"/>
-    </a-button>
-    <a-menu
-      :defaultSelectedKeys="['1']"
-      :defaultOpenKeys="['sub1']"
-      mode="inline"
-      theme="dark"
-      :inlineCollapsed="collapsed"
-    >
-      <a-menu-item key="1">
-        <a-icon type="pie-chart"/>
-        <span>Option 1</span>
-      </a-menu-item>
-      <a-menu-item key="2">
-        <a-icon type="desktop"/>
-        <span>Option 2</span>
-      </a-menu-item>
-      <a-menu-item key="3">
-        <a-icon type="inbox"/>
-        <span>Option 3</span>
-      </a-menu-item>
-      <a-sub-menu key="sub1">
+  <div class="nav-menu-wrapper">
+    <a-menu mode="inline" class="nav-menu">
+      <a-sub-menu v-for="(sub,index) in menus" :key="'sub'+index">
         <span slot="title">
-          <a-icon type="mail"/>
-          <span>Navigation One</span>
+          <span>{{sub.name}}</span>
         </span>
-        <a-menu-item key="5">Option 5</a-menu-item>
-        <a-menu-item key="6">Option 6</a-menu-item>
-        <a-menu-item key="7">Option 7</a-menu-item>
-        <a-menu-item key="8">Option 8</a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="sub2">
-        <span slot="title">
-          <a-icon type="appstore"/>
-          <span>Navigation Two</span>
-        </span>
-        <a-menu-item key="9">Option 9</a-menu-item>
-        <a-menu-item key="10">Option 10</a-menu-item>
-        <a-sub-menu key="sub3" title="Submenu">
-          <a-menu-item key="11">Option 11</a-menu-item>
-          <a-menu-item key="12">Option 12</a-menu-item>
-        </a-sub-menu>
+        <a-menu-item v-for="item in sub.list" :key="item.id">
+          <a-icon :type="item.icon"/>
+          <span>{{item.name}}</span>
+        </a-menu-item>
       </a-sub-menu>
     </a-menu>
   </div>
@@ -50,23 +16,73 @@
 
 <script>
 import Vue from "vue";
-
-import { Menu, Icon, Button } from "ant-design-vue";
+import { Menu, Icon } from "ant-design-vue";
 
 Vue.use(Menu);
 Vue.use(Icon);
-Vue.use(Button);
+
 export default {
   name: "x-menu",
   data() {
     return {
-      collapsed: false
+      collapsed: false,
+      menus: [
+        {
+          name: "用户管理",
+          list: [
+            { id: 1, name: "内部人员", icon: "file" },
+            { id: 2, name: "外部人员", icon: "file" }
+          ]
+        },
+        {
+          name: "权限管理",
+          list: [
+            { id: 3, name: "授权", icon: "file" },
+            { id: 4, name: "策略", icon: "file" },
+            { id: 5, name: "角色", icon: "file" }
+          ]
+        },
+        {
+          name: "财务管理",
+          list: [
+            { id: 6, name: "统一结算", icon: "file" },
+            { id: 7, name: "资金往来", icon: "file" },
+            { id: 8, name: "消费总览", icon: "file" },
+            { id: 9, name: "消费明细", icon: "file" },
+            { id: 10, name: "账单", icon: "file" }
+          ]
+        }
+      ]
     };
   },
-  methods: {
-    toggleCollapsed() {
-      this.collapsed = !this.collapsed;
-    }
-  }
+  methods: {}
 };
 </script>
+<style>
+.nav-menu-wrapper .ant-menu {
+  background-color: transparent;
+}
+
+.nav-menu-wrapper .ant-menu-item {
+  transition: 0s;
+}
+
+.nav-menu-wrapper .ant-menu-sub.ant-menu-inline > .ant-menu-item:hover {
+  background-color: #fff3f0;
+}
+</style>
+
+<style lang="less" scoped>
+.nav-menu-wrapper {
+  display: inline-block;
+  height: 100%;
+  width: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.nav-menu {
+  max-width: 200px;
+  min-width: 200px;
+}
+</style>

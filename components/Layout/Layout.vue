@@ -1,28 +1,30 @@
 <template>
-    <a-layout id="components-layout-demo-top-side-2">
-        <a-layout-header class="header">
-            <x-header></x-header>
-        </a-layout-header>
-        <a-layout class="view-wrapper">
-            <a-layout-sider class="nav">
-                <slot name="nav"></slot>
-            </a-layout-sider>
-            <a-layout class="page-wrapper">
-                <a-row>
-                    <a-col :span="24">
-                        <slot name="title">
-                            <div v-if="title" class="page-title">
-                                <span class="title">{{title}}</span>
-                            </div>
-                        </slot>
-                        <a-layout-content :style="{ background: '#fff',margin: 0, minHeight: '0' }">
-                            <slot name="content"></slot>
-                        </a-layout-content>
-                    </a-col>
-                </a-row>
-            </a-layout>
-        </a-layout>
+  <a-layout id="components-layout-demo-top-side-2">
+    <a-layout-header class="header">
+      <x-header></x-header>
+    </a-layout-header>
+    <a-layout class="view-wrapper">
+      <a-layout-sider class="nav">
+        <slot name="nav">
+          <x-menu></x-menu>
+        </slot>
+      </a-layout-sider>
+      <a-layout class="page-wrapper">
+        <a-row>
+          <a-col :span="24">
+            <slot name="title">
+              <div v-if="showTitle" class="page-title">
+                <span class="title">{{title}}</span>
+              </div>
+            </slot>
+            <a-layout-content :style="{ background: '#fff',margin: 0, minHeight: '0' }">
+              <slot name="content"></slot>
+            </a-layout-content>
+          </a-col>
+        </a-row>
+      </a-layout>
     </a-layout>
+  </a-layout>
 </template>
 
 <script>
@@ -52,7 +54,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "",
+      default: "Title",
       required: false
     },
     showTitle: {

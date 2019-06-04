@@ -4,6 +4,10 @@ module.exports = {
         extract: false,
       loaderOptions: {
         less: {
+          modifyVars: {
+            'primary-color': '#c6281f',
+            'link-color': '#c6281f'
+          },
           javascriptEnabled: true
         },
       }

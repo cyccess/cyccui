@@ -3,14 +3,12 @@ import Menu from './Menu';
 import Layout from './Layout'
 import Dashboard from './Dashboard'
 
-
 const components = [
   Header,
   Menu,
   Layout,
   Dashboard,
 ];
-
 
 const install = function (Vue) {
   components.map(component => {

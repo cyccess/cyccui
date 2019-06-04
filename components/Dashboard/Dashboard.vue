@@ -1,65 +1,65 @@
 <template>
-    <x-layout>
-        <div slot="nav" class="module-wrapper">
-            <div v-for="(group,index) in modules" :key="index" class="module-group">
-                <div class="module-title">{{group.groupName}}</div>
-                <ul>
-                    <li v-for="(item,idx) in group.list" :key="idx" class="m-item">
-                        <a-icon class="m-icon" :type="item.icon"/>
-                        <p class="m-name">{{item.name}}</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div slot="content" class="dashboard">
-            <a-row :gutter="30" class="card-row">
-                <a-col :span="12">
-                    <a-card title="待办" :loading="loading">
-                        <a href="#" slot="更多">more</a>
-                        <p>card content</p>
-                        <p>card content</p>
-                        <p>card content</p>
-                    </a-card>
-                </a-col>
-                <a-col :span="12">
-                    <a-card title="工作提醒" :loading="loading">
-                        <a href="#" slot="更多">more</a>
-                        <p>card content</p>
-                        <p>card content</p>
-                        <p>card content</p>
-                    </a-card>
-                </a-col>
-            </a-row>
-            <a-row :gutter="30" class="card-row">
-                <a-col :span="12">
-                    <a-card title="保前项目跟踪" :loading="loading">
-                        <a href="#" slot="更多">more</a>
-                        <p>card content</p>
-                        <p>card content</p>
-                        <p>card content</p>
-                    </a-card>
-                </a-col>
-                <a-col :span="12">
-                    <a-card title="上会项目" :loading="loading">
-                        <a href="#" slot="更多">more</a>
-                        <p>card content</p>
-                        <p>card content</p>
-                        <p>card content</p>
-                    </a-card>
-                </a-col>
-            </a-row>
-            <a-row :gutter="30" class="card-row">
-                <a-col>
-                    <a-card title="项目跟踪" :loading="loading">
-                        <a href="#" slot="更多">more</a>
-                        <p>card content</p>
-                        <p>card content</p>
-                        <p>card content</p>
-                    </a-card>
-                </a-col>
-            </a-row>
-        </div>
-    </x-layout>
+  <x-layout :showTitle="false">
+    <div slot="nav" class="module-wrapper">
+      <div v-for="(group,index) in modules" :key="index" class="module-group">
+        <div class="module-title">{{group.groupName}}</div>
+        <ul>
+          <li v-for="(item,idx) in group.list" :key="idx" class="m-item">
+            <a-icon class="m-icon" :type="item.icon"/>
+            <p class="m-name">{{item.name}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div slot="content" class="dashboard">
+      <a-row :gutter="15" class="card-row">
+        <a-col :span="12">
+          <a-card title="待办" :loading="loading">
+            <a href="#" slot="更多">more</a>
+            <p>card content</p>
+            <p>card content</p>·`````
+            <p>card content</p>
+          </a-card>
+        </a-col>
+        <a-col :span="12">
+          <a-card title="工作提醒" :loading="loading">
+            <a href="#" slot="更多">more</a>
+            <p>card content</p>
+            <p>card content</p>
+            <p>card content</p>
+          </a-card>
+        </a-col>
+      </a-row>
+      <a-row :gutter="15" class="card-row">
+        <a-col :span="12">
+          <a-card title="保前项目跟踪" :loading="loading">
+            <a href="#" slot="更多">more</a>
+            <p>card content</p>
+            <p>card content</p>
+            <p>card content</p>
+          </a-card>
+        </a-col>
+        <a-col :span="12">
+          <a-card title="上会项目" :loading="loading">
+            <a href="#" slot="更多">more</a>
+            <p>card content</p>
+            <p>card content</p>
+            <p>card content</p>
+          </a-card>
+        </a-col>
+      </a-row>
+      <a-row :gutter="30" class="card-row">
+        <a-col>
+          <a-card title="项目跟踪" :loading="loading">
+            <a href="#" slot="更多">more</a>
+            <p>card content</p>
+            <p>card content</p>
+            <p>card content</p>
+          </a-card>
+        </a-col>
+      </a-row>
+    </div>
+  </x-layout>
 </template>
 
 <script>
@@ -72,7 +72,11 @@ Vue.use(Col);
 
 export default {
   name: "x-dashboard",
-  components: {},
+  components: {
+    // ACard: Card,
+    // ARow: Row,
+    // ACol: Col
+  },
   data() {
     return {
       loading: true,
@@ -80,32 +84,32 @@ export default {
         {
           groupName: "业务",
           list: [
-            { name: "客户管理", icon: "bar-chart" },
-            { name: "担保项目", icon: "project" },
-            { name: "风险管理", icon: "area-chart" },
-            { name: "合规管理", icon: "switcher" },
-            { name: "委贷管理", icon: "usergroup-add" },
-            { name: "查询统计", icon: "usergroup-add" },
-            { name: "查询统计", icon: "area-chart" }
+            { key: 1, name: "客户管理", icon: "bar-chart" },
+            { key: 2, name: "担保项目", icon: "project" },
+            { key: 3, name: "风险管理", icon: "area-chart" },
+            { key: 4, name: "合规管理", icon: "switcher" },
+            { key: 5, name: "委贷管理", icon: "usergroup-add" },
+            { key: 6, name: "查询统计", icon: "usergroup-add" },
+            { key: 7, name: "查询统计", icon: "area-chart" }
           ]
         },
         {
           groupName: "办公",
           list: [
-            { name: "审批", icon: "audit" },
-            { name: "投票", icon: "solution" }
+            { key: 8, name: "审批", icon: "audit" },
+            { key: 9, name: "投票", icon: "solution" }
           ]
         },
         {
           groupName: "财务",
           list: [
-            { name: "财务管理", icon: "money-collect" },
-            { name: "项目绩效", icon: "stock" }
+            { key: 10, name: "财务管理", icon: "money-collect" },
+            { key: 11, name: "项目绩效", icon: "stock" }
           ]
         },
         {
           groupName: "系统",
-          list: [{ name: "设置", icon: "setting" }]
+          list: [{ key: 12, name: "设置", icon: "setting" }]
         }
       ]
     };
@@ -116,12 +120,12 @@ export default {
 
 <style lang="less" scoped>
 .dashboard {
-  padding: 25px 30px;
+  padding: 15px 30px 15px 15px;
   margin: 0 -15px;
   background: #f1f2f7;
 }
 .card-row {
-  margin: 10px 0;
+  margin-bottom: 15px;
 }
 
 .module-wrapper {
@@ -133,7 +137,7 @@ export default {
 }
 
 .module-group {
-    max-width: 200px;
+  max-width: 200px;
   .module-title {
     position: relative;
     width: 170px;
