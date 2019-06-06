@@ -28,25 +28,6 @@
 </template>
 
 <script>
-import Vue from "vue";
-
-import {
-  Menu,
-  Icon,
-  Button,
-  Layout,
-  Breadcrumb,
-  Row,
-  Col
-} from "ant-design-vue";
-
-Vue.use(Menu);
-Vue.use(Icon);
-Vue.use(Button);
-Vue.use(Layout);
-Vue.use(Breadcrumb);
-Vue.use(Row);
-Vue.use(Col);
 
 export default {
   name: "x-layout",

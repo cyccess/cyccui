@@ -4,7 +4,7 @@
       <a-icon type="bars" class="menu-icon"/>
     </div>
     <div class="logo">
-      <LogoSvg alt="logo"/>
+      <slot name="logo"></slot>
       <h1 v-if="showTitle">{{ title }}</h1>
     </div>
     <div class="info-wrapper">
@@ -52,7 +52,6 @@
       </a-dropdown>
     </div>
     <a-drawer
-      title="所有功能"
       :wrapStyle="{top:'64px'}"
       placement="left"
       :closable="false"
@@ -65,8 +64,10 @@
             <span>{{group.groupName}}</span>
           </template>
           <a-menu-item v-for="item in group.list" :key="item.key">
-            <a-icon :type="item.icon"/>
-            <span>{{item.name}}</span>
+            <router-link :to="{path:item.url}">
+              <a-icon :type="item.icon"/>
+              <span>{{item.name}}</span>
+            </router-link>
           </a-menu-item>
         </a-menu-item-group>
       </a-menu>
@@ -75,36 +76,9 @@
 </template>
 
 <script>
-import Vue from "vue";
-import {
-  Drawer,
-  Menu,
-  Icon,
-  Badge,
-  Dropdown,
-  Avatar,
-  Popover,
-  Spin,
-  Tabs
-} from "ant-design-vue";
-
-Vue.use(Drawer);
-Vue.use(Menu);
-Vue.use(Icon);
-Vue.use(Badge);
-Vue.use(Dropdown);
-Vue.use(Avatar);
-Vue.use(Popover);
-Vue.use(Spin);
-Vue.use(Tabs);
-
-import LogoSvg from "@/assets/logo.svg";
 import { setTimeout } from "timers";
 export default {
   name: "x-header",
-  components: {
-    LogoSvg
-  },
   props: {
     title: {
       type: String,
@@ -126,13 +100,13 @@ export default {
         {
           groupName: "业务",
           list: [
-            { key: 1, name: "客户管理", icon: "bar-chart" },
-            { key: 2, name: "担保项目", icon: "project" },
-            { key: 3, name: "风险管理", icon: "area-chart" },
-            { key: 4, name: "合规管理", icon: "switcher" },
+            { key: 1, name: "客户管理", icon: "user", url: "/index" },
+            { key: 2, name: "担保项目", icon: "project", url: "/dashboard" },
+            { key: 3, name: "风险管理", icon: "area-chart", url: "/index" },
+            { key: 4, name: "合规管理", icon: "switcher", url: "/dashboard" },
             { key: 5, name: "委贷管理", icon: "usergroup-add" },
-            { key: 6, name: "查询统计", icon: "usergroup-add" },
-            { key: 7, name: "查询统计", icon: "area-chart" }
+            { key: 6, name: "查询统计", icon: "dot-chart" },
+            { key: 7, name: "查询统计", icon: "area-chart", url: "/dashboard" }
           ]
         },
         {

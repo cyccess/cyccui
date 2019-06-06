@@ -24,7 +24,9 @@ module.exports = {
       svgRule
         .use('vue-svg-loader')
           .loader('vue-svg-loader')
-    }
+    },
+
+    productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
   
   }
   

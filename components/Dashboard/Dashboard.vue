@@ -5,8 +5,10 @@
         <div class="module-title">{{group.groupName}}</div>
         <ul>
           <li v-for="(item,idx) in group.list" :key="idx" class="m-item">
-            <a-icon class="m-icon" :type="item.icon"/>
-            <p class="m-name">{{item.name}}</p>
+            <router-link :to="{path:item.url}">
+              <a-icon class="m-icon" :type="item.icon"/>
+              <p class="m-name">{{item.name}}</p>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -63,20 +65,8 @@
 </template>
 
 <script>
-import Vue from "vue";
-import { Card, Row, Col } from "ant-design-vue";
-
-Vue.use(Card);
-Vue.use(Row);
-Vue.use(Col);
-
 export default {
   name: "x-dashboard",
-  components: {
-    // ACard: Card,
-    // ARow: Row,
-    // ACol: Col
-  },
   data() {
     return {
       loading: true,
@@ -84,12 +74,12 @@ export default {
         {
           groupName: "业务",
           list: [
-            { key: 1, name: "客户管理", icon: "bar-chart" },
-            { key: 2, name: "担保项目", icon: "project" },
+            { key: 1, name: "客户管理", icon: "user", url: "/index" },
+            { key: 2, name: "担保项目", icon: "project", url: "/dashboard" },
             { key: 3, name: "风险管理", icon: "area-chart" },
             { key: 4, name: "合规管理", icon: "switcher" },
             { key: 5, name: "委贷管理", icon: "usergroup-add" },
-            { key: 6, name: "查询统计", icon: "usergroup-add" },
+            { key: 6, name: "查询统计", icon: "dot-chart" },
             { key: 7, name: "查询统计", icon: "area-chart" }
           ]
         },
@@ -175,6 +165,7 @@ export default {
     }
     .m-name {
       font-size: 13px;
+      color: #333;
     }
   }
 }
